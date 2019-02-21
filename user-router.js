@@ -83,4 +83,27 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+router.put('/:id', async (req, res) => {
+  try {
+    const user = await db.update(req.params.id, req.body);
+    if (user) {
+      res
+        .status(200)
+        .json(user);
+    } else {
+      res
+        .status(404)
+        .json({
+          message: 'This user could not be found.'
+        });
+    }
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        message: 'Error updating this user.'
+      });
+  }
+});
+
 module.exports = router;
