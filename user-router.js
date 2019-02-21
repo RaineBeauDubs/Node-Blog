@@ -4,6 +4,8 @@ const db = require('./data/helpers/userDb');
 
 const router = express.Router();
 
+// GET REQUESTS
+
 router.get('/', async (req, res) => {
   try {
     const users = await db.get();
@@ -43,6 +45,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// POST REQUEST
+
 router.post('/', async (req, res) => {
   try {
     const user = await db.insert(req.body);
@@ -57,6 +61,8 @@ router.post('/', async (req, res) => {
       });
   }
 });
+
+// DELETE REQUEST
 
 router.delete('/:id', async (req, res) => {
   try {
@@ -82,6 +88,8 @@ router.delete('/:id', async (req, res) => {
       });
   }
 });
+
+// UPDATE REQUEST
 
 router.put('/:id', async (req, res) => {
   try {
